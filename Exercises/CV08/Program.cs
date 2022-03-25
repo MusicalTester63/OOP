@@ -21,10 +21,16 @@ namespace Cviceni7
             teploty.TiskPrumernychTeplot();
             teploty.TiskPrumernychMesicnichTeplot();
 
-            teploty.Kalibrace(-0.1);
+            Console.Write("Please input calibration constant: ");
+            double cal = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
+
+            teploty.Kalibrace(cal);
+
             teploty.Vyhledej(2018);
 
             teploty.Save(pathWrite);
+
         }
     }
 }

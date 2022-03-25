@@ -21,6 +21,47 @@ namespace Cviceni7
             this.mesicniTeploty = teploty;
         }
 
+        public double MaxTeplota
+        {
+            get
+            {
+                maxTeplota = mesicniTeploty[0];
+                foreach (double teplota in mesicniTeploty)
+                {
+                    if (teplota > maxTeplota)
+                    {
+                        maxTeplota = teplota;
+                    }
+                }
+                return maxTeplota;
+            }
+        }
+
+        public double MinTeplota
+        {
+            get
+            {
+                minTeplota = mesicniTeploty[0];
+                foreach (double teplota in mesicniTeploty)
+                {
+                    if (teplota < minTeplota)
+                    {
+                        minTeplota = teplota;
+                    }
+                }
+                return minTeplota;
+            }
+        }
+
+        public double PrumernaRocniTeplota
+        {
+            get
+            {
+                prumernaRocniTeplota = mesicniTeploty.Average();
+                return prumernaRocniTeplota;
+            }
+        }
+
         public int pocet()
         {
             return mesicniTeploty.Count;
@@ -38,46 +79,12 @@ namespace Cviceni7
             set=> mesicniTeploty = value; 
         }
         
-        public double MaxTeplota
-        {
-            get 
-            {
-                maxTeplota = mesicniTeploty[0];
-                foreach (double teplota in mesicniTeploty)
-                {
-                    if (teplota > maxTeplota)
-                    {
-                        maxTeplota = teplota;
-                    }
-                }
-                return maxTeplota; 
-            }
-        }
+        
 
-        public double MinTeplota
-        {
-            get 
-            {
-                minTeplota = mesicniTeploty[0];
-                foreach (double teplota in mesicniTeploty)
-                {
-                    if (teplota < minTeplota)
-                    {
-                        minTeplota = teplota;
-                    }
-                }
-                return minTeplota; 
-            }
-        }
+        
 
-        public double PrumernaRocniTeplota
-        {
-            get 
-            {
-                prumernaRocniTeplota = mesicniTeploty.Average();
-                return prumernaRocniTeplota; 
-            }
-        }
+        
+        
+    }   
 
-    }
 }
