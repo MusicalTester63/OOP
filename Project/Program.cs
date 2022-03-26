@@ -1,27 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Project
+﻿namespace Project
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Analyze(string textToTest)
         {
 
-            string testovaciText = "Toto je retezec predstavovany nekolika radky,\n"
-            + "ktere jsou od sebe oddeleny znakem LF (Line Feed).\n"
-            + "Je tu i nejaky ten vykricnik! Pro ucely testovani i otaznik?\n"
-            + "Toto je jen zkratka zkr. ale ne konec vety. A toto je\n"
-            + "posledni veta!"
-            ;
+            Console.WriteLine("Test text: " + textToTest + "\n");
 
-            Console.WriteLine("Test text: " + testovaciText + "\n");
-
-            StringAnalysis testString = new StringAnalysis(testovaciText);
-
+            StringAnalysis testString = new StringAnalysis(textToTest);
+                        
             //Výpis počtu slov
             Console.WriteLine("Word count: " + testString.CountWords());
 
@@ -29,28 +16,36 @@ namespace Project
             Console.WriteLine("Line count: " + testString.CountLines());
 
             //Výpis počtu viet
-            Console.WriteLine("Sentence count: " + testString.CountSentences());
+            Console.WriteLine("Sentence count: " + testString.CountSentences() + "\n");
 
             int n = 3;
-            Console.WriteLine("How many word do you want to print?(If you want to keep default type 0.Default is 3)");
+            bool run = true;
 
-            int temp = Convert.ToInt32(Console.ReadLine());
-
-            if (temp > 0)
+            while (run)
             {
-                n = temp;
+
+                Console.Write("Input number of words that you want to print: ");
+                int temp = Convert.ToInt32(Console.ReadLine());
+
+                if (temp > 0)
+                {
+                    n = temp;
+                    run = false;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Number must be greater than 0!");
+                }
             }
-
-
-
 
             //Výpis 3 najdlhších slov
             Console.Write(n + " longest words: ");
+
             foreach (var word in testString.LongestWords().Take(n))
             {
                 Console.Write(word + ", ");
             }
-            Console.WriteLine("");
+            Console.WriteLine();
 
 
             //Výpis 3 najkretších slov
@@ -59,7 +54,7 @@ namespace Project
             {
                 Console.Write(word + ", ");
             }
-            Console.WriteLine("");
+            Console.WriteLine("\n");
 
 
             //Výpis najčastejšieho slova
@@ -77,7 +72,50 @@ namespace Project
             {
                 Console.Write(word + ", ");
             }
-            Console.WriteLine("");
+
+            Console.WriteLine("\n\n");
+            Console.WriteLine(testString.getText());
+            Console.WriteLine("\n\n");
+            Console.WriteLine(testString.getTextNoPunctuation());
+            
+
+        }
+
+        static void Main(string[] args)
+        {
+
+            
+
+            string testovaciText1 = File.ReadAllText("C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/test.txt");
+            string testovaciText2 = "Toto je retezec predstavovany nekolika radky,\n"
+             + "ktere jsou od sebe oddeleny znakem LF (Line Feed).\n"
+             + "Je tu i nejaky ten vykricnik! Pro ucely testovani i otaznik?\n"
+             + "Toto je jen zkratka zkr. ale ne konec vety. A toto je\n"
+             + "posledni veta!\n\nKonsky cic!!"
+             ;
+
+
+            Console.WriteLine("Dostupne súbory:\n");
+
+            foreach (var path in Directory.GetFiles(@"C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"))
+            {
+                Console.WriteLine(path); // full path
+                Console.WriteLine(System.IO.Path.GetFileName(path)); // file name
+            }
+
+
+
+            string fileToAnalyze = "C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"+Console.ReadLine();
+
+            string testString = File.ReadAllText(fileToAnalyze);
+            Analyze(testString);
+
+            
+
+
+
+
+
 
         }
     }

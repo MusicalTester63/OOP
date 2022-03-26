@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-
 namespace Project
 {
     public class StringAnalysis
@@ -13,25 +12,20 @@ namespace Project
         string text;
         string textNoPunctuation;
 
-
         //Constructor, vymazanie interpunkčných znamienok
         public StringAnalysis(string text)
         {
 
             this.text = text;
 
-            textNoPunctuation = text.Replace(".", "")
-                                    .Replace(",", "")
-                                    .Replace("?", "")
-                                    .Replace("!", "")           //Odstránenie interpunkcie
-                                    .Replace("\n", " ")
-                                    .Replace("(", "")
-                                    .Replace(")", "");
+            this.textNoPunctuation = Regex.Replace(text, @"[\n]", " ");
+            this.textNoPunctuation = Regex.Replace(this.textNoPunctuation, @"[\r]", "");
+            this.textNoPunctuation = Regex.Replace(textNoPunctuation, @"[^\w\d\s]", "");
 
         }
-
-
-
+        public string getText() { return this.text; }
+        public string getTextNoPunctuation() { return textNoPunctuation; }
+        
         //Metóda na spočítanie slov 
         public int CountWords()
         {
@@ -49,41 +43,36 @@ namespace Project
         //Metóda na spočítanie viet
         public int CountSentences()
         {
-            var st = text.Replace("\n", " ")
-                         .Replace(",", "")
-                         .Replace("(", "")
-                         .Replace(")", "");
+            
+            var st = Regex.Replace(text, @"[\n]", " ");
+            st = Regex.Replace(st, @"[\r]", "");
+            st = Regex.Replace(st, @"[,()]", "");
 
             string[] splitSentences = Regex.Split(st, @"(?<=['""A-Za-z0-9][\.\!\?])\s+(?=[A-Z])");
 
             return splitSentences.Length;
         }
 
-
         //Metóda na zistenie najdlhšieho slova
         public List<string> LongestWords()
         {
             string[] stringOfWords = textNoPunctuation.Split(' ');
-            List<string> ordered = stringOfWords.OrderBy(x => x.Length) //Zoradenie podľa dĺžky
-                                                .ToList();             //Zapísanie slov do listu vzostupne
-
-            ordered.Reverse();                                         //Obrátenie poradia na zostupné
-
-            //foreach(var word in ordered){Console.WriteLine("* "+word);}
+            var ordered = stringOfWords.OrderBy(x => x.Length).ToList();   //Zoradenie podľa dĺžky
+                                                                           //ToList() Zapísanie slov do listu vzostupne
+            ordered.Reverse();
 
             return ordered;
 
         }
-
 
         //Metóda na zistenie najkratšieho slova(V zásade to isté ako najdlhšie ale pár zmien.)
         public List<string> ShortestWords()
         {
             string[] stringOfWords = textNoPunctuation.Split(' ');
-            var ordered = stringOfWords.OrderBy(x => x.Length).ToList();
+            var ordered = stringOfWords.OrderBy(n => n.Length).ToList();
+            
             return ordered;
         }
-
 
         //Metóda na zistenie najčastejšieho slova
         public string[] MostOftenWords()
@@ -117,7 +106,6 @@ namespace Project
 
             return mostCommons;
         }
-
 
         //Metóda na zoradnie slov podľa abecedy
         public List<string> sortABC()
