@@ -84,17 +84,6 @@
         static void Main(string[] args)
         {
 
-            
-
-            string testovaciText1 = File.ReadAllText("C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/test.txt");
-            string testovaciText2 = "Toto je retezec predstavovany nekolika radky,\n"
-             + "ktere jsou od sebe oddeleny znakem LF (Line Feed).\n"
-             + "Je tu i nejaky ten vykricnik! Pro ucely testovani i otaznik?\n"
-             + "Toto je jen zkratka zkr. ale ne konec vety. A toto je\n"
-             + "posledni veta!\n\nKonsky cic!!"
-             ;
-
-
             Console.WriteLine("Dostupne súbory:\n");
 
             foreach (var path in Directory.GetFiles(@"C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"))
