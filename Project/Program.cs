@@ -88,22 +88,17 @@
 
             foreach (var path in Directory.GetFiles(@"C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"))
             {
-                Console.WriteLine(path); // full path
+                //Console.WriteLine(path); // full path
                 Console.WriteLine(System.IO.Path.GetFileName(path)); // file name
             }
 
 
 
-            string fileToAnalyze = "C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"+Console.ReadLine();
+            string fileToAnalyze = "C:/Users/David/Moje veci/Documents/OOP/Project/stringArchive/"+Console.ReadLine()+".txt";
 
             string testString = File.ReadAllText(fileToAnalyze);
             Analyze(testString);
-
-            
-
-
-
-
+                        
 
 
         }
