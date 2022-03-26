@@ -27,7 +27,10 @@ namespace Cviceni7
 
             teploty.Kalibrace(cal);
 
-            teploty.Vyhledej(2018);
+            Console.Write("Search: ");
+            int year = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine();
+            teploty.Vyhledej(year);
 
             teploty.Save(pathWrite);
 

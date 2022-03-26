@@ -1,0 +1,8 @@
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Cvicenie4.exe.config
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Cvicenie4.exe
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Cvicenie4.pdb
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.AssemblyReference.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Cvicenie4.exe
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Cvicenie4.pdb
