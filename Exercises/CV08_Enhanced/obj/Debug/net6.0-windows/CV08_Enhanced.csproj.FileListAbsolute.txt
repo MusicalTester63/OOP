@@ -1,0 +1,17 @@
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\bin\Debug\net6.0-windows\CV08_Enhanced.exe
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\bin\Debug\net6.0-windows\CV08_Enhanced.deps.json
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\bin\Debug\net6.0-windows\CV08_Enhanced.runtimeconfig.json
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\bin\Debug\net6.0-windows\CV08_Enhanced.dll
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\bin\Debug\net6.0-windows\CV08_Enhanced.pdb
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.csproj.AssemblyReference.cache
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.Form1.resources
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.csproj.GenerateResource.cache
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.AssemblyInfoInputs.cache
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.AssemblyInfo.cs
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.csproj.CoreCompileInputs.cache
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.dll
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\refint\CV08_Enhanced.dll
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.pdb
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\CV08_Enhanced.genruntimeconfig.cache
+C:\Users\David\Moje veci\Documents\OOP\Exercises\CV08_Enhanced\obj\Debug\net6.0-windows\ref\CV08_Enhanced.dll

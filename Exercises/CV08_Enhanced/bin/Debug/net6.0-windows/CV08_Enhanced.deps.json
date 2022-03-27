@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CV08_Enhanced/1.0.0": {
+        "runtime": {
+          "CV08_Enhanced.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CV08_Enhanced/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
