@@ -73,19 +73,30 @@ namespace CV08_Enhanced
             return TiskTeplot();
         }
 
-        public void Vyhledej(int rok)
+        public string Vyhledej(int rok)
         {
-            Console.WriteLine("Vyhledani: " + rok);
+            string value = "";
+            string defaultValue = "String is null";
+
             if (_archiv.ContainsKey(rok))
             {
-                Console.Write("{0}: ", _archiv[rok].Rok);
+                value += string.Format("{0}: ", _archiv[rok].Rok);
                 for (int i = 0; i < _archiv[rok].MesicniTeploty.Count; i++)
                 {
-                    Console.Write("{0:0.0}; ", _archiv[rok].MesicniTeploty[i]);                  
+                    value += string.Format("{0:0.00} ", _archiv[rok].MesicniTeploty[i])+" ";
+                    //value += _archiv[rok].MesicniTeploty[i];
                 }
             }
+            else { return "Not found"; }
+
+            if (value != null)
+            {
+                return value;
+            }
             else
-                Console.WriteLine("Nenalezeno");
+            {
+                return defaultValue;
+            }
         }
 
         public string TiskTeplot()
