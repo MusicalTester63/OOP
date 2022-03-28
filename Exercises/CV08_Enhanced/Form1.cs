@@ -10,7 +10,6 @@
 
         ArchivTeplot teploty = new ArchivTeplot();
                      
-
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +22,14 @@
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            teploty.Load(pathRead);            
+
+            teploty.Load(pathRead);
+
+            this.temperatures.Clear();
+            this.averageTemperatures.Clear();
+            this.calibratedTemperatures.Clear();
+            this.searchResultTextBox.Clear();
+
             this.temperatures.Text = teploty.TiskTeplot();
             this.averageTemperatures.Text = teploty.TiskPrumernychTeplot();
             loadButtonWasClicked = true;
@@ -49,7 +55,15 @@
 
             if (loadButtonWasClicked == true)
             {
-                teploty.Save(pathWrite);
+                if (teploty.Save(pathWrite))
+                {
+                    MessageBox.Show("Temperatures have been saved", "Saved", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("There was an error saving temperatures", "Error", MessageBoxButtons.OK);
+                }
+                
             }
             else
             {

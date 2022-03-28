@@ -39,30 +39,39 @@ namespace CV08_Enhanced
             }
         }
         
-        public void Save(string path)
+        public bool Save(string path)
         {
+            try { 
             StreamWriter writer = File.CreateText(path);
-
             foreach (var item in _archiv.Values)
             {
-                writer.Write("{0}: ", item.Rok);
+                writer.Write("{0}: ", item.Rok);               
+
                 for (int i = 0; i < item.MesicniTeploty.Count; i++)
                 {
                     if (i + 1 == item.MesicniTeploty.Count)
                     {
-                        writer.Write("{0:0.0} ", item.MesicniTeploty[i]);
+                        writer.Write("{0:0.00} ", item.MesicniTeploty[i]);                       
                     }
                     else
-                        writer.Write("{0:0.0}; ", item.MesicniTeploty[i]);
+                    {
+                        writer.Write("{0:0.00}; ", item.MesicniTeploty[i]);
+                    }                        
                 }
                 writer.WriteLine();
             }
             writer.Close();
+            return true;
+            }
+            catch(Exception e) 
+            {
+                return false;            
+            }   
+
         }
 
         public string Kalibrace(double number)
         {
-            Console.WriteLine("Kalibrace: ");
             foreach (var item in _archiv.Values)
             {
                 for (int i = 0; i < item.MesicniTeploty.Count; i++)
