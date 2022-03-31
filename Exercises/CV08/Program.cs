@@ -34,6 +34,8 @@ namespace Cviceni7
 
             teploty.Save(pathWrite);
 
+            Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }

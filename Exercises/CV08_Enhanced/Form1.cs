@@ -41,9 +41,10 @@
         {
             if (loadButtonWasClicked==true)
             {
+                this.searchResultTextBox.Clear();
                 double cal = Convert.ToDouble(calConstantMenu.Value);
                 this.calibratedTemperatures.Text = teploty.Kalibrace(cal);
-            }
+            }            
             else
             {
                 MessageBox.Show("Please load temperatures to continue", "Error: Temperatures not loaded", MessageBoxButtons.OK);
@@ -82,10 +83,16 @@
                     this.searchResultTextBox.Text = teploty.Vyhledej(searchYear);
 
                 }
+                else if (String.IsNullOrEmpty(this.searchTextBox.Text))
+                {
+
+                    this.searchResultTextBox.Text = "";
+
+                }
                 else
                 {
 
-                    MessageBox.Show("You haven't entered search variable", "Error: Could not serach", MessageBoxButtons.OK);
+                    MessageBox.Show("Wrong input", "Error: Could not serach", MessageBoxButtons.OK);
 
                 }                
             }
@@ -108,6 +115,32 @@
 
         }
 
-       
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (loadButtonWasClicked == true)
+            {
+                if (int.TryParse(this.searchTextBox.Text, out int value))
+                {
+                    this.searchResultTextBox.Clear();
+                    int searchYear = Convert.ToInt16(this.searchTextBox.Text);
+                    this.searchResultTextBox.Text = teploty.Vyhledej(searchYear);
+
+                }
+                else if (String.IsNullOrEmpty(this.searchTextBox.Text))
+                {
+
+                    this.searchResultTextBox.Text = "";
+
+                }
+                else
+                {
+                    this.searchResultTextBox.Text = "Wrong input";
+                }
+            }
+            else
+            {
+                this.searchResultTextBox.Text = "Wrong input";
+            }
+        }
     }
 }

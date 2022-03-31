@@ -18,7 +18,6 @@ namespace Cviceni7
             double rok = 0;
             double cislo = 0;
  
-            //prectu jeden radek
             string radek = null;
             while ((radek = reader.ReadLine()) != null)
             {

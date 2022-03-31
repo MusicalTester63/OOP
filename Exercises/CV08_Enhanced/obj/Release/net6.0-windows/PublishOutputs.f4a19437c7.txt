@@ -1,0 +1,5 @@
+C:\Users\David\Downloads\Publish\CV08_Enhanced.exe
+C:\Users\David\Downloads\Publish\CV08_Enhanced.dll
+C:\Users\David\Downloads\Publish\CV08_Enhanced.deps.json
+C:\Users\David\Downloads\Publish\CV08_Enhanced.runtimeconfig.json
+C:\Users\David\Downloads\Publish\CV08_Enhanced.pdb

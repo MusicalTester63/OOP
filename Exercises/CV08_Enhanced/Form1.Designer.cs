@@ -50,11 +50,11 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.calibratedTemperatures = new System.Windows.Forms.TextBox();
             this.calibratedTemperaturesLabel = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.loadButton = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
             this.buttons = new System.Windows.Forms.FlowLayoutPanel();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.searchCalTablePanel.SuspendLayout();
@@ -209,6 +209,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(147, 27);
             this.searchTextBox.TabIndex = 1;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // searchBoxLabel
             // 
@@ -348,25 +349,16 @@
             this.calibratedTemperaturesLabel.TabIndex = 0;
             this.calibratedTemperaturesLabel.Text = "Calibrated temperatures:";
             // 
-            // exitButton
+            // buttons
             // 
-            this.exitButton.Location = new System.Drawing.Point(3, 3);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(94, 29);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // loadButton
-            // 
-            this.loadButton.Location = new System.Drawing.Point(223, 3);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(94, 29);
-            this.loadButton.TabIndex = 0;
-            this.loadButton.Text = "Load";
-            this.loadButton.UseVisualStyleBackColor = true;
-            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            this.buttons.Controls.Add(this.saveButton);
+            this.buttons.Controls.Add(this.loadButton);
+            this.buttons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.buttons.Location = new System.Drawing.Point(641, 461);
+            this.buttons.Name = "buttons";
+            this.buttons.Size = new System.Drawing.Size(420, 46);
+            this.buttons.TabIndex = 3;
             // 
             // saveButton
             // 
@@ -379,16 +371,15 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // buttons
+            // loadButton
             // 
-            this.buttons.Controls.Add(this.saveButton);
-            this.buttons.Controls.Add(this.loadButton);
-            this.buttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.buttons.Location = new System.Drawing.Point(641, 461);
-            this.buttons.Name = "buttons";
-            this.buttons.Size = new System.Drawing.Size(420, 46);
-            this.buttons.TabIndex = 3;
+            this.loadButton.Location = new System.Drawing.Point(223, 3);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(94, 29);
+            this.loadButton.TabIndex = 0;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -398,6 +389,16 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(632, 46);
             this.flowLayoutPanel1.TabIndex = 9;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(3, 3);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(94, 29);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // Form1
             // 

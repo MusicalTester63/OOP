@@ -18,7 +18,6 @@ namespace CV08_Enhanced
             double rok = 0;
             double cislo = 0;
  
-            //prectu jeden radek
             string radek = null;
             while ((radek = reader.ReadLine()) != null)
             {
@@ -122,13 +121,11 @@ namespace CV08_Enhanced
 
                     if (i + 1 == item.MesicniTeploty.Count)
                     {
-                        //String.Format("{0:0.0} ", item.MesicniTeploty[i]);
-                        value += string.Format("{0:0.00}",item.MesicniTeploty[i])+Environment.NewLine;
+                       value += string.Format("{0:0.00}",item.MesicniTeploty[i])+Environment.NewLine;
                     }
                     else
                     {
                         value += string.Format(" {0:0.00} ", item.MesicniTeploty[i]);
-                        //Console.Write("{0:0.0}; ", item.MesicniTeploty[i]);
                     }
 
                 }
@@ -189,9 +186,8 @@ namespace CV08_Enhanced
             for (int i = 0; i < 12; i++)
             {
                 prumerMesic[i] = prumerMesic[i] / _archiv.Keys.Count;
-                Console.Write(" {0:0.0};", prumerMesic[i]);
+               
             }
-            Console.WriteLine("\n");
         }
 
     }
