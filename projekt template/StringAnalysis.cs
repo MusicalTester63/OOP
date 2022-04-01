@@ -79,13 +79,30 @@ namespace Project
         {
             string[] stringOfWords = textNoPunctuation.Split(' '); //Zapísanie slov do poľa
 
+            /*
+            foreach(string word in stringOfWords)
+            {
+                Console.Write(word+" ");
+            }*/
+
             var nameGroup = stringOfWords.GroupBy(x => x);  //Zoskupenie rovnakých slov
+
+            /*
+            foreach (var group in nameGroup)
+            {
+                Console.WriteLine(group.Key + ": ");
+                foreach(var x in group)
+                {
+                    Console.WriteLine("* "+x);
+                }
+            }*/
 
             int maxCount = nameGroup.Max(g => g.Count());   //Počet najčastejšieho slova
 
             var mostCommons = nameGroup.Where(x => x.Count() == maxCount) //Vyberie načastejšie slovo
                                        .Select(x => x.Key)
                                        .ToArray();
+
 
             return mostCommons;
         }

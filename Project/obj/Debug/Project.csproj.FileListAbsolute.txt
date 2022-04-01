@@ -1,0 +1,11 @@
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Project.exe.config
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Project.exe
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Project.pdb
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.AssemblyReference.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.Form1.resources
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.GenerateResource.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.exe
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.pdb
