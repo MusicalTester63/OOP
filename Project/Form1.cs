@@ -29,7 +29,6 @@ namespace Project
         
         public Dictionary<string,string> getCheckedFilesList()
         {
-
             var checkedFilesList = new Dictionary<string, string>();
             var checkedFiles = getCheckItems();
 
