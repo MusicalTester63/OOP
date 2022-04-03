@@ -13,40 +13,50 @@ namespace Project
 {
     public partial class Form1 : Form
     {
-
         public Dictionary<string,string> loadFiles()
         {            
             var fileList = new Dictionary<string,string>();
+            var checkedFiles = getCheckItems();
+
 
             foreach (var path in Directory.GetFiles(@"C:/Users/David/Moje veci/Documents/OOP/Project/textArchive/"))
-            {                
-                fileList.Add(System.IO.Path.GetFileName(path),path);
+            {
+                fileList.Add(System.IO.Path.GetFileName(path), path);
             }
-
-            foreach(var fileName in fileList.Keys)             
-            {                 
-
-                if (this.checkedListBoxFiles.Items.Count == fileList.Count)
-                {
-                    continue;
-                }
-                else
-                {
-                    this.checkedListBoxFiles.Items.AddRange(new object[] { fileName });
-                }
-
-            }
+            
             return fileList;
+        }
+        
+        public Dictionary<string,string> getCheckedFilesList()
+        {
+
+            var checkedFilesList = new Dictionary<string, string>();
+            var checkedFiles = getCheckItems();
+
+            foreach (var path in Directory.GetFiles(@"C:/Users/David/Moje veci/Documents/OOP/Project/textArchive/"))
+            {
+                foreach (var item in checkedFiles)
+                {
+                    if (item == System.IO.Path.GetFileName(path))
+                    {
+                        checkedFilesList.Add(System.IO.Path.GetFileName(path), path);
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }           
+
+            return checkedFilesList;
         }
 
         public string Analyze(Dictionary<string,string> fileList)
         {
             string result = "";
             int wordsToCount = Convert.ToInt32(this.numericUpDownWords.Value);
-
-            //MessageBox.Show("Success", "Success",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
-            //this.textBoxAllFiles.Text = testString.getTextNoPunctuation();
-            
+                        
             foreach (var file in fileList)
             {
                 StringAnalysis testString = new StringAnalysis(File.ReadAllText(file.Value));
@@ -99,35 +109,242 @@ namespace Project
 
         }
 
+        public string AnalyzeAll(Dictionary<string,string> fileList)
+        {
+
+            int wordsToCount = Convert.ToInt32(this.numericUpDownWords.Value);
+            string result = "";
+            string text = "";
+
+            foreach (var file in fileList.Values)
+            {
+                text += File.ReadAllText(file);
+
+            }
+            
+            StringAnalysis testString = new StringAnalysis(text);
+
+            //Výpis počtu slov
+            result += "Word count: " + Convert.ToString(testString.CountWords()) + Environment.NewLine;
+
+            //Výpis počtu riadkov
+            result += "Line count: " + Convert.ToString(testString.CountLines()) + Environment.NewLine;
+
+            //Výpis počtu viet
+            result += "Sentence count: " + testString.CountSentences() + Environment.NewLine;
+
+            //Výpis 3 najdlhších slov
+            result += wordsToCount + " Longest words:  ";
+            foreach (var word in testString.LongestWords().Take(wordsToCount))
+            {
+                result += word + ",  ";
+            }
+            result += Environment.NewLine;
+
+            //Výpis 3 najkretších slov
+            result += wordsToCount + " Shortest words:  ";
+            foreach (var word in testString.ShortestWords().Take(wordsToCount))
+            {
+                result += word + ",  ";
+            }
+            result += Environment.NewLine;
+
+
+            //Výpis najčastejšieho slova
+            result += "Most common word: ";
+            foreach (var word in testString.MostOftenWords())
+            {
+                result += word;
+            }
+            result += Environment.NewLine;
+
+            //Výpis abecedne zoradených slov
+            result += "Alphabetically ordered text: ";
+            foreach (var word in testString.sortABC())
+            {
+                result += word + ", ";
+            }
+            result += Environment.NewLine;
+
+            result += Environment.NewLine;
+
+            return result;
+        }
+
+        public List<string> getCheckItems()
+        {
+            var fileChecked = new List<string>();
+
+            int i;
+            for (i = 0; i <= (checkedListBoxFiles.Items.Count - 1); i++)
+            {
+                if (checkedListBoxFiles.GetItemChecked(i))
+                {                    
+                    fileChecked.Add(checkedListBoxFiles.Items[i].ToString());  
+                }
+            }
+            return fileChecked;
+        }
+
+        public void refresh()
+        {
+            this.checkedListBoxFiles.Items.Clear();
+            
+
+            var fileList = loadFiles();
+            foreach (var fileName in fileList.Keys)
+            {
+
+                if (this.checkedListBoxFiles.Items.Count == fileList.Count)
+                {
+                    continue;
+                }
+                else
+                {
+                    this.checkedListBoxFiles.Items.AddRange(new object[] { fileName });
+
+                }
+
+            }
+
+        }
 
         public Form1()
         {
             InitializeComponent();
+
+            var fileList = loadFiles();
+
+            //Vypíše načítané súbory do checkbox poľa
+            foreach (var fileName in fileList.Keys)
+            {
+
+                if (this.checkedListBoxFiles.Items.Count == fileList.Count)
+                {
+                    continue;
+                }
+                else
+                {
+                    this.checkedListBoxFiles.Items.AddRange(new object[] { fileName });
+                    
+                }               
+
+            }
             
-            loadFiles();
 
         }
 
+        int n=0;
 
         private void checkedListBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (n) 
+            {
+                case 0:
 
+                    this.fileSelection.Items.Clear();
+                    var fileChecked = getCheckItems();                    
+                    foreach (var item in fileChecked)
+                    {
+                        this.fileSelection.Items.Add(item.ToString());
+                    }
+                    n = 1;
 
+                break;              //nefunguje dokončit
+            
+                case 1:
 
+                    fileChecked = getCheckItems();
+                    this.fileSelection.Items.Add(fileChecked.LastOrDefault());
+
+                break;            
+            }
+
+            /*
+            var fileChecked = getCheckItems();
+            this.fileSelection.Items.Clear();
+            foreach(var item in fileChecked)
+            { 
+                this.fileSelection.Items.Add(item.ToString());
+            }
+            */
         }
+
+
+        
+
 
         private void buttonAnalyze_Click(object sender, EventArgs e)
         {
-            this.textBoxAllFiles.Clear();
-            var fileList = loadFiles();
-           
-           this.textBoxSelectedFiles.Text = Analyze(fileList);
-           
+            string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
+            var checkedFiles = getCheckedFilesList();
+            var allFiles = loadFiles();
+            var selectedFile = new Dictionary<string, string>();
+
+            foreach (var file in checkedFiles)
+            {
+                if(file.Key == selected)
+                {
+                    selectedFile.Add(file.Key, file.Value);
+                    break;
+                }
+            }
+            MessageBox.Show(selected,"Prdel",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+
+
+            this.textBoxSelectedFiles.Clear();
+            this.textBoxSelectedFiles.Text += Analyze(selectedFile);
+            this.textBoxAllFiles.Text = AnalyzeAll(allFiles);
+            
         }
 
-        private void numericUpDownWords_ValueChanged(object sender, EventArgs e)
-        {
+        private void fileSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            /*
+            var files = getCheckedFilesList();
+            this.textBoxSelectedFiles.Clear();            
 
+            var selectedFile = new Dictionary<string, string>();
+            string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
+
+
+            foreach (var file in files)
+            {
+                if (file.Key == selected)
+                {
+                    selectedFile.Add(file.Key, file.Value);
+                    break;
+                }
+
+            }
+
+            this.textBoxSelectedFiles.Text += Analyze(selectedFile);
+            */
+        }
+
+        private void buttonAddFile_Click(object sender, EventArgs e)
+        {
+            
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                string filePath = openFileDialog1.FileName;
+                try
+                {
+                    File.Copy(filePath, @"C:/Users/David/Moje veci/Documents/OOP/Project/textArchive/" + System.IO.Path.GetFileName(filePath));
+                    refresh();
+
+                }
+                catch (Exception ex) 
+                {
+
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                }
+            }
+            
+            
 
 
         }

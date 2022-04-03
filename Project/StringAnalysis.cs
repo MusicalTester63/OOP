@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Project
 {
-    public class StringAnalysis
+    public class StringAnalysis : Form1
     {
+
+
         string text;
         string textNoPunctuation;
 
@@ -20,7 +27,8 @@ namespace Project
 
             this.textNoPunctuation = Regex.Replace(text, @"[\n]", " ");
             this.textNoPunctuation = Regex.Replace(this.textNoPunctuation, @"[\r]", "");
-            this.textNoPunctuation = Regex.Replace(textNoPunctuation, @"[^\w\d\s]", "");
+            this.textNoPunctuation = Regex.Replace(textNoPunctuation, @"[^\w\d\s]+", "");
+            this.textNoPunctuation = Regex.Replace(textNoPunctuation, @"\s+", " ");
 
         }
         public string getText() { return this.text; }
