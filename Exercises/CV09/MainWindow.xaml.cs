@@ -27,14 +27,11 @@ namespace CV09
         {
             InitializeComponent();
             display.Text = calculator.Display;
-            //memory.Content = calculator.Memory;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             calculator.Tlacitko(((Button)sender).Content.ToString());
-
             display.Text = calculator.Display;
-            //memory.Content = calculator.Memory;
         }
 
     }

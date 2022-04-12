@@ -10,10 +10,10 @@ namespace CV09
     {
         private enum Stav
         {
-            PrvniCislo,
-            Operace,
-            DruheCislo,
-            Vysledek
+            FirstNumber,
+            Operation,
+            SecondNumber,
+            Result
         };
         private enum Operations
         {
@@ -23,7 +23,7 @@ namespace CV09
             Divide
         };
 
-        private Stav _stav = Stav.PrvniCislo;
+        private Stav _stav = Stav.FirstNumber;
         private Operations operation;
 
         private string one = "";
@@ -31,13 +31,12 @@ namespace CV09
         private string answer = "";
 
 
-        public String Display { get; set; }//co se má zobrazit.
-        public String Memory { get; set; }//vzdy prazdne
+        public String Display { get; set; }
+        public String Memory { get; set; }
 
 
         public void Tlacitko(String btn)
         {
-
             var cislo = "";
 
             switch (btn)
@@ -83,27 +82,27 @@ namespace CV09
                     break;
 
                 case "+":
-                    _stav = Stav.Operace;
+                    _stav = Stav.Operation;
                     operation = Operations.Plus;
                 break;
 
                 case "-":
-                    _stav = Stav.Operace;
+                    _stav = Stav.Operation;
                     operation = Operations.Minus;
                 break;
 
                 case "*":
-                    _stav = Stav.Operace;
+                    _stav = Stav.Operation;
                     operation = Operations.Multiply;
                 break;
 
                 case "/":
-                    _stav = Stav.Operace;
+                    _stav = Stav.Operation;
                     operation = Operations.Divide;
                 break;
 
                 case "=":
-                    _stav = Stav.Vysledek;
+                    _stav = Stav.Result;
                     answer = FindAnswer();
                     Display = answer;
                     one = "";
@@ -112,14 +111,17 @@ namespace CV09
                 break;
 
                 case "+-":
+                    //Nie je ošetrene ak je displej prázdny
+
+
                     if (Display != "")
                     {
-                        if (_stav == Stav.PrvniCislo)
+                        if (_stav == Stav.FirstNumber)
                         {
                             var tmp = Convert.ToDouble(one) * -1;
                             one = "" + tmp;
                         }
-                        if (_stav == Stav.DruheCislo)
+                        if (_stav == Stav.SecondNumber)
                         {
                             var tmp = Convert.ToDouble(two) * -1;
                             two = "" + tmp;
@@ -127,13 +129,13 @@ namespace CV09
                     }
                 break;
 
-                case "CE":  //Zobrazené
-                    if (_stav == Stav.PrvniCislo)
+                case "CE":  
+                    if (_stav == Stav.FirstNumber)
                     {
                         one = "";
                         Display = one;
                     }
-                    if (_stav == Stav.DruheCislo)
+                    if (_stav == Stav.SecondNumber)
                     {
                         two = "";
                         Display = two;
@@ -142,7 +144,7 @@ namespace CV09
                     break;
 
                 case "C":   //Všetky
-                    _stav = Stav.PrvniCislo;
+                    _stav = Stav.FirstNumber;
                     Display = answer;
                     one = "";
                     two = "";
@@ -155,12 +157,12 @@ namespace CV09
                     {
                         break;
                     }
-                    if (_stav == Stav.PrvniCislo)
+                    if (_stav == Stav.FirstNumber)
                     {
                         one = one.Substring(0, one.Length - 1);
                         Display = one;
                     }
-                    if (_stav == Stav.DruheCislo)
+                    if (_stav == Stav.SecondNumber)
                     {
                         two = one.Substring(0, two.Length - 1);
                         Display = two;
@@ -181,11 +183,11 @@ namespace CV09
                     break;
 
                 case "MR":
-                    if (_stav == Stav.PrvniCislo)
+                    if (_stav == Stav.FirstNumber)
                     {
                         one = Memory;
                     }
-                    if (_stav == Stav.DruheCislo)
+                    if (_stav == Stav.SecondNumber)
                     {
                         two = Memory;
                     }
@@ -202,55 +204,53 @@ namespace CV09
 
             switch (_stav)
             {
-                case Stav.PrvniCislo:
+                case Stav.FirstNumber:
                     one += cislo;
                     Display = one;
                     break;
 
-                case Stav.DruheCislo:
+                case Stav.SecondNumber:
                     two += cislo;
                     Display = two;
                     break;
 
-                case Stav.Operace:
-                    _stav = Stav.DruheCislo;
-                    break;
+                case Stav.Operation:
+                    _stav = Stav.SecondNumber;
+                break;
 
-                case Stav.Vysledek:
-                    _stav = Stav.PrvniCislo;
-                    break;
+                case Stav.Result:
+                    _stav = Stav.FirstNumber;
+                break;
             }
         }
 
         private string FindAnswer()
         {
             try { 
-            var o = Convert.ToDouble(one);
-            var t = Convert.ToDouble(two);
+            var first = Convert.ToDouble(one);
+            var second = Convert.ToDouble(two);
             
                 double ans = 0;
 
                 switch (operation)
                 {
                     case Operations.Plus:
-                        ans = o + t;
+                        ans = first + second;
                         break;
 
                     case Operations.Minus:
-                        ans = o - t;
+                        ans = first - second;
                         break;
 
                     case Operations.Multiply:
-                        ans = o * t;
+                        ans = first * second;
                         break;
 
                     case Operations.Divide:
-                        ans = o / t;
+                        ans = first / second;
                         break;
                 }
                 return "" + ans;
-
-
             }
             catch (Exception ex)
             {
