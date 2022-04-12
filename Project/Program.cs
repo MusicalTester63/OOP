@@ -7,12 +7,8 @@ using System.IO;
 
 namespace Project
 {
-    internal class Program 
-    {
-
-        
-
-
+    internal class Program : Form1
+    {        
 
         /// <summary>
         /// The main entry point for the application.
@@ -23,6 +19,7 @@ namespace Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
         }
     }
 }

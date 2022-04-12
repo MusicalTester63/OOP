@@ -12,14 +12,11 @@ using System.IO;
 
 namespace Project
 {
-    public class StringAnalysis : Form1
+    public class StringAnalysis 
     {
-
-
         string text;
         string textNoPunctuation;
-
-        //Constructor, vymazanie interpunkčných znamienok
+                
         public StringAnalysis(string text)
         {
 

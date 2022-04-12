@@ -13,6 +13,7 @@ namespace Project
 {
     public partial class Form1 : Form
     {
+
         public Dictionary<string,string> loadFiles()
         {            
             var fileList = new Dictionary<string,string>();
@@ -26,7 +27,8 @@ namespace Project
             
             return fileList;
         }
-        
+
+
         public Dictionary<string,string> getCheckedFilesList()
         {
             var checkedFilesList = new Dictionary<string, string>();
@@ -50,6 +52,7 @@ namespace Project
 
             return checkedFilesList;
         }
+
 
         public string Analyze(Dictionary<string,string> fileList)
         {
@@ -108,24 +111,24 @@ namespace Project
 
         }
 
+
         public string AnalyzeAll(Dictionary<string,string> fileList)
         {
 
             int wordsToCount = Convert.ToInt32(this.numericUpDownWords.Value);
-            string result = "";
+            string result = "rit";
             string text = "";
-
+            
             foreach (var file in fileList.Values)
             {
                 text += File.ReadAllText(file);
-
             }
             
-            StringAnalysis testString = new StringAnalysis(text);
-
+            StringAnalysis testString = new StringAnalysis(text);   //Tu to je            
+            
             //Výpis počtu slov
             result += "Word count: " + Convert.ToString(testString.CountWords()) + Environment.NewLine;
-
+            
             //Výpis počtu riadkov
             result += "Line count: " + Convert.ToString(testString.CountLines()) + Environment.NewLine;
 
@@ -164,11 +167,10 @@ namespace Project
                 result += word + ", ";
             }
             result += Environment.NewLine;
-
             result += Environment.NewLine;
-
             return result;
         }
+
 
         public List<string> getCheckItems()
         {
@@ -185,18 +187,26 @@ namespace Project
             return fileChecked;
         }
 
-        public void refresh()
+
+        public void refreshCheckbox()
         {
+            var fileList = loadFiles();
+            var checkItems = getCheckItems();
+
             this.checkedListBoxFiles.Items.Clear();
+            this.fileSelection.Items.Clear();
+
+
             
 
-            var fileList = loadFiles();
+
+
             foreach (var fileName in fileList.Keys)
-            {
+            {              
 
                 if (this.checkedListBoxFiles.Items.Count == fileList.Count)
                 {
-                    continue;
+                    break;
                 }
                 else
                 {
@@ -204,20 +214,46 @@ namespace Project
 
                 }
 
+            }            
+        }
+
+
+        public void refreshAnalysis() 
+        {
+            this.textBoxSelectedFiles.Clear();
+            this.textBoxAllFiles.Clear();
+
+
+            var fileList = loadFiles();
+
+            string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
+            var checkedFiles = getCheckedFilesList();
+            var selectedFile = new Dictionary<string, string>();
+
+            foreach (var file in checkedFiles)
+            {
+                if (file.Key == selected)
+                {
+                    selectedFile.Add(file.Key, file.Value);
+                    break;
+                }
             }
+            this.textBoxAllFiles.Text = AnalyzeAll(fileList);
+            this.textBoxSelectedFiles.Text += Analyze(selectedFile);
 
         }
+
+
+
+
 
         public Form1()
         {
             InitializeComponent();
-
             var fileList = loadFiles();
-
             //Vypíše načítané súbory do checkbox poľa
             foreach (var fileName in fileList.Keys)
             {
-
                 if (this.checkedListBoxFiles.Items.Count == fileList.Count)
                 {
                     continue;
@@ -225,52 +261,23 @@ namespace Project
                 else
                 {
                     this.checkedListBoxFiles.Items.AddRange(new object[] { fileName });
-                    
                 }               
-
             }
-            
-
+            this.textBoxAllFiles.Text = AnalyzeAll(fileList);
         }
+                
 
-        int n=0;
 
         private void checkedListBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (n) 
-            {
-                case 0:
-
-                    this.fileSelection.Items.Clear();
-                    var fileChecked = getCheckItems();                    
-                    foreach (var item in fileChecked)
-                    {
-                        this.fileSelection.Items.Add(item.ToString());
-                    }
-                    n = 1;
-
-                break;              //nefunguje dokončit
-            
-                case 1:
-
-                    fileChecked = getCheckItems();
-                    this.fileSelection.Items.Add(fileChecked.LastOrDefault());
-
-                break;            
-            }
-
-            /*
             var fileChecked = getCheckItems();
             this.fileSelection.Items.Clear();
             foreach(var item in fileChecked)
             { 
                 this.fileSelection.Items.Add(item.ToString());
             }
-            */
+            
         }
-
-
-        
 
 
         private void buttonAnalyze_Click(object sender, EventArgs e)
@@ -288,51 +295,23 @@ namespace Project
                     break;
                 }
             }
-            MessageBox.Show(selected,"Prdel",MessageBoxButtons.OK,MessageBoxIcon.Information);
-
-
-
+            
             this.textBoxSelectedFiles.Clear();
             this.textBoxSelectedFiles.Text += Analyze(selectedFile);
             this.textBoxAllFiles.Text = AnalyzeAll(allFiles);
             
         }
 
-        private void fileSelection_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            /*
-            var files = getCheckedFilesList();
-            this.textBoxSelectedFiles.Clear();            
-
-            var selectedFile = new Dictionary<string, string>();
-            string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
-
-
-            foreach (var file in files)
-            {
-                if (file.Key == selected)
-                {
-                    selectedFile.Add(file.Key, file.Value);
-                    break;
-                }
-
-            }
-
-            this.textBoxSelectedFiles.Text += Analyze(selectedFile);
-            */
-        }
 
         private void buttonAddFile_Click(object sender, EventArgs e)
         {
-            
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-
                 string filePath = openFileDialog1.FileName;
                 try
                 {
                     File.Copy(filePath, @"C:/Users/David/Moje veci/Documents/OOP/Project/textArchive/" + System.IO.Path.GetFileName(filePath));
-                    refresh();
+                    refreshCheckbox();
 
                 }
                 catch (Exception ex) 
@@ -342,10 +321,34 @@ namespace Project
 
                 }
             }
-            
-            
+        }
 
 
+        private void fileSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
+            
+            var checkedFiles = getCheckedFilesList();
+            var allFiles = loadFiles();
+            var selectedFile = new Dictionary<string, string>();
+
+            foreach (var file in checkedFiles)
+            {
+                if (file.Key == selected)
+                {
+                    selectedFile.Add(file.Key, file.Value);
+                    break;
+                }
+            }
+
+            this.textBoxSelectedFiles.Clear();
+            this.textBoxSelectedFiles.Text += Analyze(selectedFile);
+            this.textBoxAllFiles.Text = AnalyzeAll(allFiles);
+        }
+
+        private void numericUpDownWords_ValueChanged(object sender, EventArgs e)
+        {
+            refreshAnalysis();
         }
     }
 }
