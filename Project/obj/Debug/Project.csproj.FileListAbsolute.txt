@@ -9,3 +9,7 @@ C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.Generate
 C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.exe
 C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.pdb
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Project.exe.manifest
+C:\Users\David\Moje veci\Documents\OOP\Project\bin\Debug\Project.application
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.exe.manifest
+C:\Users\David\Moje veci\Documents\OOP\Project\obj\Debug\Project.application
