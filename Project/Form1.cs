@@ -116,7 +116,7 @@ namespace Project
         {
 
             int wordsToCount = Convert.ToInt32(this.numericUpDownWords.Value);
-            string result = "rit";
+            string result = "";
             string text = "";
             
             foreach (var file in fileList.Values)
@@ -195,9 +195,7 @@ namespace Project
 
             this.checkedListBoxFiles.Items.Clear();
             this.fileSelection.Items.Clear();
-
-
-            
+                               
 
 
 
@@ -225,6 +223,7 @@ namespace Project
 
 
             var fileList = loadFiles();
+            
 
             string selected = this.fileSelection.GetItemText(this.fileSelection.SelectedItem);
             var checkedFiles = getCheckedFilesList();
@@ -238,7 +237,7 @@ namespace Project
                     break;
                 }
             }
-            this.textBoxAllFiles.Text = AnalyzeAll(fileList);
+            this.textBoxAllFiles.Text = AnalyzeAll(checkedFiles);
             this.textBoxSelectedFiles.Text += Analyze(selectedFile);
 
         }
@@ -251,6 +250,7 @@ namespace Project
         {
             InitializeComponent();
             var fileList = loadFiles();
+            var checkedFiles = getCheckedFilesList();
             //Vypíše načítané súbory do checkbox poľa
             foreach (var fileName in fileList.Keys)
             {
@@ -263,7 +263,7 @@ namespace Project
                     this.checkedListBoxFiles.Items.AddRange(new object[] { fileName });
                 }               
             }
-            this.textBoxAllFiles.Text = AnalyzeAll(fileList);
+            //this.textBoxAllFiles.Text = AnalyzeAll(checkedFiles);
         }
                 
 
@@ -276,6 +276,8 @@ namespace Project
             { 
                 this.fileSelection.Items.Add(item.ToString());
             }
+
+            refreshAnalysis();
             
         }
 
@@ -343,7 +345,7 @@ namespace Project
 
             this.textBoxSelectedFiles.Clear();
             this.textBoxSelectedFiles.Text += Analyze(selectedFile);
-            this.textBoxAllFiles.Text = AnalyzeAll(allFiles);
+            this.textBoxAllFiles.Text = AnalyzeAll(checkedFiles);
         }
 
         private void numericUpDownWords_ValueChanged(object sender, EventArgs e)

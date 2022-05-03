@@ -69,13 +69,14 @@
             this.baseTableLayout.Controls.Add(this.flowLayoutPanelButtons, 0, 2);
             this.baseTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.baseTableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.baseTableLayout.Name = "baseTableLayout";
             this.baseTableLayout.Padding = new System.Windows.Forms.Padding(5);
             this.baseTableLayout.RowCount = 3;
             this.baseTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.baseTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.baseTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.baseTableLayout.Size = new System.Drawing.Size(1623, 489);
+            this.baseTableLayout.Size = new System.Drawing.Size(1540, 489);
             this.baseTableLayout.TabIndex = 0;
             // 
             // panelFiles
@@ -85,20 +86,20 @@
             this.panelFiles.Location = new System.Drawing.Point(5, 5);
             this.panelFiles.Margin = new System.Windows.Forms.Padding(0);
             this.panelFiles.Name = "panelFiles";
-            this.panelFiles.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.panelFiles.Padding = new System.Windows.Forms.Padding(11, 10, 11, 0);
             this.baseTableLayout.SetRowSpan(this.panelFiles, 2);
-            this.panelFiles.Size = new System.Drawing.Size(483, 414);
+            this.panelFiles.Size = new System.Drawing.Size(459, 414);
             this.panelFiles.TabIndex = 0;
             // 
             // groupBoxFiles
             // 
             this.groupBoxFiles.Controls.Add(this.checkedListBoxFiles);
             this.groupBoxFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxFiles.Location = new System.Drawing.Point(10, 10);
+            this.groupBoxFiles.Location = new System.Drawing.Point(11, 10);
             this.groupBoxFiles.Margin = new System.Windows.Forms.Padding(0);
             this.groupBoxFiles.Name = "groupBoxFiles";
             this.groupBoxFiles.Padding = new System.Windows.Forms.Padding(15);
-            this.groupBoxFiles.Size = new System.Drawing.Size(463, 404);
+            this.groupBoxFiles.Size = new System.Drawing.Size(437, 404);
             this.groupBoxFiles.TabIndex = 0;
             this.groupBoxFiles.TabStop = false;
             this.groupBoxFiles.Text = "Files:";
@@ -113,7 +114,7 @@
             this.checkedListBoxFiles.Location = new System.Drawing.Point(15, 30);
             this.checkedListBoxFiles.Margin = new System.Windows.Forms.Padding(15);
             this.checkedListBoxFiles.Name = "checkedListBoxFiles";
-            this.checkedListBoxFiles.Size = new System.Drawing.Size(433, 359);
+            this.checkedListBoxFiles.Size = new System.Drawing.Size(407, 359);
             this.checkedListBoxFiles.TabIndex = 0;
             this.checkedListBoxFiles.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxFiles_SelectedIndexChanged);
             // 
@@ -122,10 +123,10 @@
             this.panelAllFiles.Controls.Add(this.textBoxAllFiles);
             this.panelAllFiles.Controls.Add(this.labelAllFiles);
             this.panelAllFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAllFiles.Location = new System.Drawing.Point(488, 212);
+            this.panelAllFiles.Location = new System.Drawing.Point(464, 212);
             this.panelAllFiles.Margin = new System.Windows.Forms.Padding(0);
             this.panelAllFiles.Name = "panelAllFiles";
-            this.panelAllFiles.Size = new System.Drawing.Size(1130, 207);
+            this.panelAllFiles.Size = new System.Drawing.Size(1071, 207);
             this.panelAllFiles.TabIndex = 4;
             // 
             // textBoxAllFiles
@@ -134,10 +135,11 @@
             this.textBoxAllFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxAllFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAllFiles.Location = new System.Drawing.Point(0, 16);
+            this.textBoxAllFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAllFiles.Multiline = true;
             this.textBoxAllFiles.Name = "textBoxAllFiles";
             this.textBoxAllFiles.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAllFiles.Size = new System.Drawing.Size(1130, 191);
+            this.textBoxAllFiles.Size = new System.Drawing.Size(1071, 191);
             this.textBoxAllFiles.TabIndex = 2;
             // 
             // labelAllFiles
@@ -159,12 +161,13 @@
             this.tableLayoutPanel2.Controls.Add(this.textBoxSelectedFiles, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panelSelectFile, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(491, 8);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(467, 7);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1124, 201);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1065, 203);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // panelWordCountNumber
@@ -172,11 +175,11 @@
             this.panelWordCountNumber.Controls.Add(this.labelWords);
             this.panelWordCountNumber.Controls.Add(this.numericUpDownWords);
             this.panelWordCountNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelWordCountNumber.Location = new System.Drawing.Point(562, 0);
+            this.panelWordCountNumber.Location = new System.Drawing.Point(532, 0);
             this.panelWordCountNumber.Margin = new System.Windows.Forms.Padding(0);
             this.panelWordCountNumber.Name = "panelWordCountNumber";
             this.panelWordCountNumber.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panelWordCountNumber.Size = new System.Drawing.Size(562, 50);
+            this.panelWordCountNumber.Size = new System.Drawing.Size(533, 50);
             this.panelWordCountNumber.TabIndex = 6;
             // 
             // labelWords
@@ -193,11 +196,11 @@
             // 
             // numericUpDownWords
             // 
-            this.numericUpDownWords.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.numericUpDownWords.Location = new System.Drawing.Point(0, 8);
+            this.numericUpDownWords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDownWords.Location = new System.Drawing.Point(0, 26);
             this.numericUpDownWords.Margin = new System.Windows.Forms.Padding(0);
             this.numericUpDownWords.Name = "numericUpDownWords";
-            this.numericUpDownWords.Size = new System.Drawing.Size(562, 22);
+            this.numericUpDownWords.Size = new System.Drawing.Size(533, 22);
             this.numericUpDownWords.TabIndex = 1;
             this.numericUpDownWords.Value = new decimal(new int[] {
             3,
@@ -213,12 +216,13 @@
             this.tableLayoutPanel2.SetColumnSpan(this.textBoxSelectedFiles, 2);
             this.textBoxSelectedFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSelectedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSelectedFiles.Location = new System.Drawing.Point(3, 53);
+            this.textBoxSelectedFiles.Location = new System.Drawing.Point(3, 52);
+            this.textBoxSelectedFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSelectedFiles.Multiline = true;
             this.textBoxSelectedFiles.Name = "textBoxSelectedFiles";
             this.textBoxSelectedFiles.ReadOnly = true;
             this.textBoxSelectedFiles.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSelectedFiles.Size = new System.Drawing.Size(1118, 145);
+            this.textBoxSelectedFiles.Size = new System.Drawing.Size(1059, 149);
             this.textBoxSelectedFiles.TabIndex = 2;
             // 
             // panelSelectFile
@@ -229,7 +233,7 @@
             this.panelSelectFile.Location = new System.Drawing.Point(0, 0);
             this.panelSelectFile.Margin = new System.Windows.Forms.Padding(0);
             this.panelSelectFile.Name = "panelSelectFile";
-            this.panelSelectFile.Size = new System.Drawing.Size(562, 50);
+            this.panelSelectFile.Size = new System.Drawing.Size(532, 50);
             this.panelSelectFile.TabIndex = 3;
             // 
             // labelFileSelection
@@ -248,23 +252,25 @@
             this.fileSelection.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.fileSelection.FormattingEnabled = true;
             this.fileSelection.Location = new System.Drawing.Point(0, 26);
+            this.fileSelection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fileSelection.Name = "fileSelection";
-            this.fileSelection.Size = new System.Drawing.Size(562, 24);
+            this.fileSelection.Size = new System.Drawing.Size(532, 24);
             this.fileSelection.TabIndex = 1;
             this.fileSelection.SelectedIndexChanged += new System.EventHandler(this.fileSelection_SelectedIndexChanged);
             // 
             // flowLayoutPanelButtons
             // 
+            this.flowLayoutPanelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.baseTableLayout.SetColumnSpan(this.flowLayoutPanelButtons, 2);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonAnalyze);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonAddFile);
-            this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanelButtons.Location = new System.Drawing.Point(5, 419);
             this.flowLayoutPanelButtons.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
-            this.flowLayoutPanelButtons.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(1613, 65);
+            this.flowLayoutPanelButtons.Padding = new System.Windows.Forms.Padding(11, 10, 11, 0);
+            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(1530, 65);
             this.flowLayoutPanelButtons.TabIndex = 2;
             // 
             // buttonAnalyze
@@ -273,9 +279,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAnalyze.AutoSize = true;
             this.buttonAnalyze.Enabled = false;
-            this.buttonAnalyze.Location = new System.Drawing.Point(1495, 13);
+            this.buttonAnalyze.Location = new System.Drawing.Point(1410, 12);
+            this.buttonAnalyze.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAnalyze.Name = "buttonAnalyze";
-            this.buttonAnalyze.Size = new System.Drawing.Size(95, 29);
+            this.buttonAnalyze.Size = new System.Drawing.Size(95, 32);
             this.buttonAnalyze.TabIndex = 0;
             this.buttonAnalyze.Text = "Analyze";
             this.buttonAnalyze.UseVisualStyleBackColor = true;
@@ -287,9 +294,10 @@
             this.buttonAddFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddFile.AutoSize = true;
-            this.buttonAddFile.Location = new System.Drawing.Point(1394, 13);
+            this.buttonAddFile.Location = new System.Drawing.Point(1309, 12);
+            this.buttonAddFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddFile.Name = "buttonAddFile";
-            this.buttonAddFile.Size = new System.Drawing.Size(95, 29);
+            this.buttonAddFile.Size = new System.Drawing.Size(95, 32);
             this.buttonAddFile.TabIndex = 1;
             this.buttonAddFile.Text = "Add file";
             this.buttonAddFile.UseVisualStyleBackColor = true;
@@ -304,8 +312,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1623, 489);
+            this.ClientSize = new System.Drawing.Size(1540, 489);
             this.Controls.Add(this.baseTableLayout);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Text Analyzer";
             this.baseTableLayout.ResumeLayout(false);
